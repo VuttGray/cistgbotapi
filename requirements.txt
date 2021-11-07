@@ -1,0 +1,10 @@
+bcrypt
+dynaconf
+fastapi
+passlib
+pydantic
+python-jose
+python-multipart
+schedule
+sqlalchemy
+uvicorn
