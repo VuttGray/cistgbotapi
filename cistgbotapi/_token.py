@@ -4,6 +4,7 @@ from typing import Optional
 from jose import jwt, JWTError
 
 from cistgbotapi import schemas
+from cistgbotapi.config import settings
 
 
 class ApiConfig:
@@ -13,12 +14,7 @@ class ApiConfig:
         self.access_token_expire_minutes = kwargs.pop('access_token_expire_minutes', 30)
 
 
-conf: ApiConfig
-
-
-def configure_api(**kwargs):
-    global conf
-    conf = ApiConfig(**kwargs)
+conf: ApiConfig = ApiConfig(**settings.default.tgbotapi)
 
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):

@@ -13,7 +13,6 @@ from cistgbotapi.config import settings, load_json_settings
 from cistgbotapi.database import create_db, SessionLocal
 from cistgbotapi.models import Message
 from cistgbotapi.routers import message, user, authentication
-from cistgbotapi._token import configure_api
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s\t%(message)s')
 app = FastAPI()
@@ -52,5 +51,4 @@ async def root():
 if __name__ == "__main__":
     create_db()
     Process(target=start_scheduler).start()
-    configure_api(**settings.default.tgbotapi)
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
